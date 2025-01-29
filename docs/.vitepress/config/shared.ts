@@ -50,7 +50,7 @@ export const shared = defineConfig({
   },
 
   sitemap: {
-    hostname: 'https://vitepress.dev',
+    hostname: 'https://vite.jnpan.top',
     transformItems(items) {
       return items.filter((item) => !item.url.includes('migration'))
     }
@@ -65,8 +65,8 @@ export const shared = defineConfig({
     ['meta', { property: 'og:locale', content: 'zh' }],
     ['meta', { property: 'og:title', content: 'VitePress | Vite & Vue Powered Static Site Generator' }],
     ['meta', { property: 'og:site_name', content: 'VitePress' }],
-    ['meta', { property: 'og:image', content: 'https://vitepress.dev/vitepress-og.jpg' }],
-    ['meta', { property: 'og:url', content: 'https://vitepress.dev/' }],
+    ['meta', { property: 'og:image', content: 'https://vite.jnpan.top/vitepress-og.jpg' }],
+    ['meta', { property: 'og:url', content: 'https://vite.jnpan.top/' }],
     ['script', { src: 'https://cdn.usefathom.com/script.js', 'data-site': 'AZBRSFGG', 'data-spa': 'auto', defer: '' }]
   ],
 
@@ -74,7 +74,7 @@ export const shared = defineConfig({
     logo: { src: '/vitepress-logo-mini.svg', width: 24, height: 24 },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
+      { icon: 'github', link: 'https://github.com/jinnan11/vitepress' }
     ],
 
     search: {
