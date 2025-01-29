@@ -4,13 +4,18 @@ import {
   groupIconVitePlugin,
   localIconLoader
 } from 'vitepress-plugin-group-icons'
-import { search as zhSearch } from './en'
+import { search as esSearch } from './es'
+import { search as faSearch } from './fa'
+import { search as koSearch } from './ko'
+import { search as ptSearch } from './pt'
+import { search as ruSearch } from './ru'
+import { search as zhSearch } from './zh'
 
 export const shared = defineConfig({
   title: 'VitePress',
 
   rewrites: {
-    'zh/:rest*': ':rest*'
+    'en/:rest*': ':rest*'
   },
 
   lastUpdated: true,
@@ -23,12 +28,7 @@ export const shared = defineConfig({
       // We use `[!!code` in demo to prevent transformation, here we revert it back.
       {
         postprocess(code) {
-          try {
-            return code.replace(/\[\!\!code/g, '[!code')
-          } catch (error) {
-            console.error('Error in postprocess:', error)
-            return code
-          }
+          return code.replace(/\[\!\!code/g, '[!code')
         }
       }
     ],
@@ -36,31 +36,36 @@ export const shared = defineConfig({
       // TODO: remove when https://github.com/vuejs/vitepress/issues/4431 is fixed
       const fence = md.renderer.rules.fence!
       md.renderer.rules.fence = function (tokens, idx, options, env, self) {
-        try {
-          const { localeIndex = 'root' } = env
-          const codeCopyButtonTitle = (() => {
-            switch (localeIndex) {
-              case 'en':
-                return 'Copy code'
-              default:
-                return '复制代码'
-            }
-          })()
-          return fence(tokens, idx, options, env, self).replace(
-            '<button title="复制代码" class="copy"></button>',
-            `<button title="${codeCopyButtonTitle}" class="copy"></button>`
-          )
-        } catch (error) {
-          console.error('Error in fence rule:', error)
-          return fence(tokens, idx, options, env, self)
-        }
+        const { localeIndex = 'root' } = env
+        const codeCopyButtonTitle = (() => {
+          switch (localeIndex) {
+            case 'es':
+              return 'Copiar código'
+            case 'fa':
+              return 'کپی کد'
+            case 'ko':
+              return '코드 복사'
+            case 'pt':
+              return 'Copiar código'
+            case 'ru':
+              return 'Скопировать код'
+            case 'zh':
+              return '复制代码'
+            default:
+              return 'Copy code'
+          }
+        })()
+        return fence(tokens, idx, options, env, self).replace(
+          '<button title="Copy Code" class="copy"></button>',
+          `<button title="${codeCopyButtonTitle}" class="copy"></button>`
+        )
       }
       md.use(groupIconMdPlugin)
     }
   },
 
   sitemap: {
-    hostname: 'https://vite.jnpan.top',
+    hostname: 'https://vitepress.dev',
     transformItems(items) {
       return items.filter((item) => !item.url.includes('migration'))
     }
@@ -75,8 +80,8 @@ export const shared = defineConfig({
     ['meta', { property: 'og:locale', content: 'en' }],
     ['meta', { property: 'og:title', content: 'VitePress | Vite & Vue Powered Static Site Generator' }],
     ['meta', { property: 'og:site_name', content: 'VitePress' }],
-    ['meta', { property: 'og:image', content: 'https://vite.jnpan.top/vitepress-og.jpg' }],
-    ['meta', { property: 'og:url', content: 'https://vite.jnpan.top/' }],
+    ['meta', { property: 'og:image', content: 'https://vitepress.dev/vitepress-og.jpg' }],
+    ['meta', { property: 'og:url', content: 'https://vitepress.dev/' }],
     ['script', { src: 'https://cdn.usefathom.com/script.js', 'data-site': 'AZBRSFGG', 'data-spa': 'auto', defer: '' }]
   ],
 
@@ -84,7 +89,7 @@ export const shared = defineConfig({
     logo: { src: '/vitepress-logo-mini.svg', width: 24, height: 24 },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/jinnan11/vitepress' }
+      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
     ],
 
     search: {
