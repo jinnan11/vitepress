@@ -4,18 +4,13 @@ import {
   groupIconVitePlugin,
   localIconLoader
 } from 'vitepress-plugin-group-icons'
-import { search as esSearch } from './es'
-import { search as faSearch } from './fa'
-import { search as koSearch } from './ko'
-import { search as ptSearch } from './pt'
-import { search as ruSearch } from './ru'
 import { search as zhSearch } from './zh'
 
 export const shared = defineConfig({
   title: 'VitePress',
 
   rewrites: {
-    'en/:rest*': ':rest*'
+    'zh/:rest*': ':rest*'
   },
 
   lastUpdated: true,
@@ -39,16 +34,6 @@ export const shared = defineConfig({
         const { localeIndex = 'root' } = env
         const codeCopyButtonTitle = (() => {
           switch (localeIndex) {
-            case 'es':
-              return 'Copiar código'
-            case 'fa':
-              return 'کپی کد'
-            case 'ko':
-              return '코드 복사'
-            case 'pt':
-              return 'Copiar código'
-            case 'ru':
-              return 'Скопировать код'
             case 'zh':
               return '复制代码'
             default:
@@ -77,7 +62,7 @@ export const shared = defineConfig({
     ['link', { rel: 'icon', type: 'image/png', href: '/vitepress-logo-mini.png' }],
     ['meta', { name: 'theme-color', content: '#5f67ee' }],
     ['meta', { property: 'og:type', content: 'website' }],
-    ['meta', { property: 'og:locale', content: 'en' }],
+    ['meta', { property: 'og:locale', content: 'zh' }],
     ['meta', { property: 'og:title', content: 'VitePress | Vite & Vue Powered Static Site Generator' }],
     ['meta', { property: 'og:site_name', content: 'VitePress' }],
     ['meta', { property: 'og:image', content: 'https://vitepress.dev/vitepress-og.jpg' }],
@@ -99,12 +84,7 @@ export const shared = defineConfig({
         apiKey: '52f578a92b88ad6abde815aae2b0ad7c',
         indexName: 'vitepress',
         locales: {
-          ...zhSearch,
-          ...ptSearch,
-          ...ruSearch,
-          ...esSearch,
-          ...koSearch,
-          ...faSearch
+          ...zhSearch
         }
       }
     },
