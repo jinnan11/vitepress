@@ -23,7 +23,12 @@ export const shared = defineConfig({
       // We use `[!!code` in demo to prevent transformation, here we revert it back.
       {
         postprocess(code) {
-          return code.replace(/\[\!\!code/g, '[!code')
+          try {
+            return code.replace(/\[\!\!code/g, '[!code')
+          } catch (error) {
+            console.error('Error in postprocess:', error)
+            return code
+          }
         }
       }
     ],
@@ -31,19 +36,24 @@ export const shared = defineConfig({
       // TODO: remove when https://github.com/vuejs/vitepress/issues/4431 is fixed
       const fence = md.renderer.rules.fence!
       md.renderer.rules.fence = function (tokens, idx, options, env, self) {
-        const { localeIndex = 'root' } = env
-        const codeCopyButtonTitle = (() => {
-          switch (localeIndex) {
-            case 'en':
-              return 'Copy code'
-            default:
-              return '复制代码'
-          }
-        })()
-        return fence(tokens, idx, options, env, self).replace(
-          '<button title="复制代码" class="copy"></button>',
-          `<button title="${codeCopyButtonTitle}" class="copy"></button>`
-        )
+        try {
+          const { localeIndex = 'root' } = env
+          const codeCopyButtonTitle = (() => {
+            switch (localeIndex) {
+              case 'en':
+                return 'Copy code'
+              default:
+                return '复制代码'
+            }
+          })()
+          return fence(tokens, idx, options, env, self).replace(
+            '<button title="复制代码" class="copy"></button>',
+            `<button title="${codeCopyButtonTitle}" class="copy"></button>`
+          )
+        } catch (error) {
+          console.error('Error in fence rule:', error)
+          return fence(tokens, idx, options, env, self)
+        }
       }
       md.use(groupIconMdPlugin)
     }
