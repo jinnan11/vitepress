@@ -7,7 +7,7 @@ import {
 import { search as zhSearch } from './zh'
 
 export const shared = defineConfig({
-  title: 'VitePress',
+  title: 'Vite',
 
   rewrites: {
     'zh/:rest*': ':rest*'
@@ -63,7 +63,7 @@ export const shared = defineConfig({
     ['meta', { name: 'theme-color', content: '#5f67ee' }],
     ['meta', { property: 'og:type', content: 'website' }],
     ['meta', { property: 'og:locale', content: 'zh' }],
-    ['meta', { property: 'og:title', content: 'VitePress | Vite & Vue Powered Static Site Generator' }],
+    ['meta', { property: 'og:title', content: 'Vite | Vite & Vue Powered Static Site Generator' }],
     ['meta', { property: 'og:site_name', content: 'Vite' }],
     ['meta', { property: 'og:image', content: 'https://vite.jnpan.top/vitepress-og.jpg' }],
     ['meta', { property: 'og:url', content: 'https://vite.jnpan.top/' }],

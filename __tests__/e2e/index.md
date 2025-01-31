@@ -1,10 +1,10 @@
 ---
 layout: home
 
-title: VitePress
+title: Vite
 
 hero:
-  name: VitePress
+  name: Vite
   text: Vite & Vue Powered Static Site Generator
   actions:
     - theme: brand

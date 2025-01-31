@@ -7,11 +7,11 @@
     "vue",
     "vitepress"
   ],
-  "homepage": "https://vitepress.dev/",
+  "homepage": "https://vite.jnpan.top/",
   "bugs": {
-    "url": "https://github.com/vuejs/vitepress/issues"
+    "url": "https://github.com/jinnan11/vitepress/issues"
   },
-  "repository": "github:vuejs/vitepress",
+  "repository": "github:jinnan11/vitepress",
   "license": "MIT",
   "author": "Evan You",
   "type": "module",

@@ -19,8 +19,8 @@
     x-robots-tag = "noindex"
 
 [[redirects]]
-  from = "https://vitepress.vuejs.org/*"
-  to = "https://vitepress.dev/:splat"
+  from = "https://vite.jnpan.top/*"
+  to = "https://vite.jnpan.top/:splat"
   force = true
 
 [[redirects]]
