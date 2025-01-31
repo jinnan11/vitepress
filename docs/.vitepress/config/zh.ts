@@ -69,12 +69,12 @@ function nav(): DefaultTheme.NavItem[] {
       text: pkg.version,
       items: [
         {
-          text: '更新日志',
-          link: 'https://github.com/jinnan11/vitepress/blob/main/CHANGELOG.md'
+          text: '槿南主页',
+          link: 'https://jinnan.top'
         },
         {
-          text: '参与贡献',
-          link: 'https://github.com/jinnan11/vitepress/blob/main/.github/contributing.md'
+          text: '槿南盘',
+          link: 'https://pan.jinnan.top'
         }
       ]
     }
